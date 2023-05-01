@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      charset="utf-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="kakerike.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Kakerike</title>
+  </head>
+  <body>
+    <section class="header">
+      <nav>
+        <a href="kakerike.html"><img class="LOL" src="logo.png" alt="" /></a>
+        <div class="tittel">
+          <a href="kakerike.html">
+            <h1>Kakerike</h1>
+            <p>Sweet dreams</p>
+          </a>
+        </div>
+        <div class="nav-link" id="navlink">
+          <i class="fa fa-times" onclick="hidemenu()"></i>
+          <ul>
+            <li><a href="handlekurv.html">KURV</a></li>
+            <li><a href="meny.html">MENY</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showmenu()"></i>
+      </nav>
+      <hr>
+      <div class="handlekurv-container">
+        <h1 class="Handletittel">Handlekurv</h1>
+        <div class="handlekurv-og-skjema">
+          <ul class="handlekurv-liste"></ul>
+        <form>
+          <label for="navn">Navn:</label>
+          <input type="text" id="navn" name="navn" required><br>
+          
+          <label for="adresse">Adresse:</label>
+          <input type="text" id="adresse" name="adresse" required><br>
+          
+          <label for="tlf">Telefonnummer:</label>
+          <input type="tel" id="tlf" name="tlf" required><br>
+          
+          <label for="kortnummer">Kortnummer:</label>
+          <input type="text" id="kortnummer" name="kortnummer" required><br>
+          
+          <label for="utlopsdato">Utløpsdato:</label>
+          <input type="month" id="utlopsdato" name="utlopsdato" required><br>
+          
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" name="cvv" required><br>
+          
+          <input type="submit" value="Betal" class="betal-btn">
+        </form>
+      </div>
+    <ul class="handlekurv-liste">
+    </ul>
+    <script>
+        function visHandlekurv() {
+          var handlekurvListe = document.querySelector('.handlekurv-liste');
+          var handlekurvData = JSON.parse(localStorage.getItem('handlekurv')) || [];
+    
+          handlekurvData.forEach(function(produkt, index) {
+            var handlekurvElement = document.createElement('li');
+            handlekurvElement.classList.add('handlekurv-element');
+            handlekurvElement.textContent = produkt;
+    
+            var slettBtn = document.createElement('button');
+            slettBtn.classList.add('slett-btn');
+            slettBtn.textContent = 'Slett';
+            slettBtn.addEventListener('click', function() {
+              slettFraHandlekurv(index);
+            });
+    
+            handlekurvElement.appendChild(slettBtn);
+            handlekurvListe.appendChild(handlekurvElement);
+          });
+        }
+    
+        function slettFraHandlekurv(index) {
+          var handlekurvData = JSON.parse(localStorage.getItem('handlekurv')) || [];
+          handlekurvData.splice(index, 1);
+          localStorage.setItem('handlekurv', JSON.stringify(handlekurvData));
+          location.reload();
+        }
+        visHandlekurv();
+      </script>
+    <footer>
+        <div class="content">
+          <div class="top">
+            <div class="logo-details">
+              <span class="logo_name">Kakerike</span>
+            </div>
+            <div class="media-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+          <div class="link-boxes">
+            <ul class="box">
+              <li class="link_name">Kundeservice</li>
+              <li><a href="kontakt-oss.html">Kontakt oss</a></li>
+              <li><a href="bytte-retur.html">Bytte og retur</a></li>
+              <li><a href="kjop-vilkar.html">Kjøpsvilkår</a></li>
+              <li><a href="klikk-hent.html">Klikk og hent</a></li>
+            </ul>
+            <ul class="box">
+              <li class="link_name">Informasjon</li>
+              <li><a href="Personvern.html">Personvern</a></li>
+              <li><a href="om-oss.html">Om oss</a></li>
+              <li><a href="ofte-sporsmol.html">Ofte stilte spørsmål</a></li>
+            </ul>
+            <ul class="box input-box">
+              <li class="link_name">Abonner</li>
+              <li><input type="text" placeholder="Tast inn epost" /></li>
+              <li class="sub"><input type="button" value="Abonner" /></li>
+            </ul>
+          </div>
+          </div>
+        <div class="finish">
+          <ul class="box">
+            <li class="link_name" style="color: white">Adresse:</li>
+            <li>Cake St 558</li>
+            <li>Norway</li>
+          </ul>
+          <ul class="box">
+            <li class="link_name" style="color: white">Email:</li>
+            <li>Kakerike@cakes.com</li>
+          </ul>
+          <ul class="box">
+            <li class="link_name" style="color: white">Tlf:</li>
+            <li>+4744422333</li>
+          </ul>
+        </div>
+        <div class="bottom-details">
+          <div class="bottom_text">
+            <span class="copyright_text"
+              >Copyright &#169; 2021 <a href="#">Kakerike.</a>All rights
+              reserved</span>
+            <span class="policy_terms">
+              <a href="#">Privacy policy</a>
+              <a href="#">Terms & Condition</a>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!---------javascript for toggle meny-------->
+      <script>
+        var navlink = document.getElementById("navlink");
+        function showmenu() {
+          navlink.style.right = "0";
+        }
+        function hidemenu() {
+          navlink.style.right = "-200px";
+        }
+      </script>
+    </body>
+</html>
